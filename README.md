@@ -1,3 +1,6 @@
+## vue-cli@3.0 + webpack@3.6 + vuex@3.0.1
+
+
 ## 项目树
 ```
 .
@@ -228,64 +231,3 @@ cat ~/.ssh/id_rsa.pub
 
 ```
 
-1.轮播图接口：
-
-	https://zt.dujia.qunar.com/api/app_outbound_travel/index_banner.php?callback=jsonp5&city=%E6%B7%B1%E5%9C%B3
-
-	callback: jsonp5
-	city: 深圳
-
-	
-2.错峰特价：
-
-	https://zt.dujia.qunar.com/zts/cuofeng/api.php?callback=jsonp6&act=get_recommand&city=%E6%B7%B1%E5%9C%B3
-
-	callback: jsonp6
-	act: get_recommand
-	city: 深圳
-
-
-3.错峰特价详情：
-
-	https://touch.dujia.qunar.com/item?id=4242529280&it=n_index_oversea_ser_visa_desti_theme_tejia_tejia_desti_theme_tejia_tejia_micro_travel_tejia_tejia_tejia
-
-	id: 4242529280
-	it: n_index_oversea_ser_visa_desti_theme_tejia_tejia_desti_theme_tejia_tejia_micro_travel_tejia_tejia_tejia	
-	
-3.发现旅行：
-
-	https://ugc.dujia.qunar.com/art/like?callback=jsonp9&channelType=2&dep=%E6%B7%B1%E5%9C%B3&keywords=	
-
-	callback: jsonp9
-	channelType: 2
-	dep: 深圳
-	keywords: 
-	
-
-4.发现旅行详情页：
-
-	https://ugc.dujia.qunar.com/p/v2/detail?id=2857381631&it=n_index_oversea_ser_visa_desti_theme_tejia_tejia_desti_theme_tejia_tejia_micro_travel&dep=%E6%B7%B1%E5%9C%B3#/?_k=uysz9o	
-
-	id: 2857381631
-	dep: 深圳
-
-PC
-element     28.7k
-iview		16k
-	
-mint-ui		11.7k
-vux	        13.4k
-ZanUi		5.5k
-
-	
-	
-	
-function food(a, b, c, d, t) {
-	var x = (a / (a + b + c + d) * t).toFixed(2);
-	var j = (b / (a + b + c + d) * t).toFixed(2);
-	var l = (c / (a + b + c + d) * t).toFixed(2);
-	var s = (d / (a + b + c + d) * t).toFixed(2);
-	console.log(`大哥今天的饭钱是：${x}\n俊霖今天的饭钱是：${j}\n元鸿今天的饭钱是：${l}\n小仙女今天的饭钱是：${s}`);
-}	
-
-food(18.99,12.64,21.98,20.88,50.84)
