@@ -1,0 +1,29 @@
+//公用样式方法
+
+
+/*单行文本溢出*/
+ellipsis(){
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/*多行文本溢出*/
+ellipsis_n(n){
+    display: -webkit-box!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: n;      //展示n行
+}
+
+clearfix()
+    zoom:1;
+    &:after
+        display:block;
+        clear:both;
+        content:"";
+        visibility:hidden;
+        height:0;
+        font-size:0;
