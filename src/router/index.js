@@ -7,32 +7,14 @@ import Router from 'vue-router'
 // import Movie from '@/pages/movie/Movie'
 // import MovieDetail from '@/pages/movie/MovieDetail'
 
+
 // vue路由懒加载  异步加载
-const Home = (resolve) => {
-	import ('@/pages/home/Home').then((module) => {
-		resolve(module)
-	})
-}
-const City = (resolve) => {
-	import ('@/pages/city/City').then((module) => {
-		resolve(module)
-	})
-}
-const Detail = (resolve) => {
-	import ('@/pages/detail/Detail').then((module) => {
-		resolve(module)
-	})
-}
-const Movie = (resolve) => {
-	import ('@/pages/movie/Movie').then((module) => {
-		resolve(module)
-	})
-}
-const MovieDetail = (resolve) => {
-	import ('@/pages/movie/MovieDetail').then((module) => {
-		resolve(module)
-	})
-}
+const Home = resolve => require(['@/pages/home/Home'], resolve)
+const City = resolve => require(['@/pages/city/City'], resolve)
+const Detail = resolve => require(['@/pages/detail/Detail'], resolve)
+const Movie = resolve => require(['@/pages/movie/Movie'], resolve)
+const MovieDetail = resolve => require(['@/pages/movie/MovieDetail'], resolve)
+
 
 Vue.use(Router)
 
