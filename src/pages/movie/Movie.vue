@@ -1,5 +1,6 @@
 <template>
 	<div class="movie">
+		<mt-button type="danger">danger</mt-button>
 		<section>
 			<header>
 				<h2>{{hotName}}</h2>
@@ -11,8 +12,7 @@
 						<img class="item-poster" v-lazy="hotImg[index]">
 						<span class="item-title">{{item.title}}</span>
 						<div class="item-rating" v-if="item.rating">
-							<el-rate v-model="halfHotRate[index]" disabled text-color="#ff9900" score-template="{value}">
-							</el-rate>
+							<rate :score="halfHotRate[index]" :fontSize="'font-size:12px'"></rate>
 							<span>{{hotRate[index]}}</span>
 						</div>
 					</router-link>
@@ -30,8 +30,7 @@
 						<img class="item-poster" v-lazy="freeImg[index]">
 						<span class="item-title">{{item.title}}</span>
 						<div class="item-rating">
-							<el-rate v-model="halfFreeRate[index]" disabled text-color="#ff9900" score-template="{value}">
-							</el-rate>
+							<rate :score="halfFreeRate[index]" :fontSize="'font-size:12px'"></rate>
 							<span>{{freeRate[index]}}</span>
 						</div>
 					</router-link>
@@ -49,8 +48,7 @@
 						<img class="item-poster" v-lazy="newImg[index]">
 						<span class="item-title">{{item.title}}</span>
 						<div class="item-rating">
-							<el-rate v-model="halfNewRate[index]" disabled text-color="#ff9900" score-template="{value}">
-							</el-rate>
+							<rate :score="halfNewRate[index]" :fontSize="'font-size:12px'"></rate>
 							<span>{{newRate[index]}}</span>
 						</div>
 					</router-link>
@@ -62,7 +60,9 @@
 
 <script type="text/ecmascript-6">
 import Vue from "vue";
+import Rate from "common/rate/Rate";
 import { getMovieShowing, getMovieFree, getMovieLatest } from "api/movie";
+
 export default {
     name: "",
     data() {
@@ -81,7 +81,7 @@ export default {
             newImg: []
         };
     },
-    components: {},
+    components: { Rate },
     computed: {
         halfHotRate() {
             return this.hotRate.map(function(i) {
@@ -199,4 +199,8 @@ section
 				display block
 			.item-rating
 				margin-bottom 20px
+				span
+					font-size 12px
+					position relative
+					top 1px
 </style>

@@ -6,7 +6,7 @@
 			<div class="left">
 				<div class="rating">
 					<div class="item-rating">
-						<el-rate v-model="halfRate" disabled text-color="#ff9900" score-template="{value}"></el-rate>
+						<rate :score="halfRate"></rate>
 						<span>{{rate || '暂无评分'}}</span>
 					</div>
 					<p class="evaluate">{{count}}人评价</p>
@@ -62,7 +62,7 @@
 							<div class="user-info">
 								<strong>{{item.user.name}}</strong>
 								<div class="rating-stars">
-									<el-rate v-model="evaluateRate[index]" disabled text-color="#ff9900" score-template="{value}"></el-rate>
+									<rate :score="evaluateRate[index]" :fontSize="'font-size:14px'"></rate>
 									<span>{{evaluateRate[index]}}分</span>
 								</div>
 								<div class="date">{{item.create_time}}</div>
@@ -107,6 +107,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import Rate from "common/rate/Rate";
 import {
     getMovieDetail,
     getCelebrities,
@@ -136,7 +137,7 @@ export default {
             expandVal: '( 展开<span class="iconfont">&#xe608;</span> )'
         };
     },
-    components: {},
+    components: { Rate },
     methods: {
         expand() {
             this.ellipsis = !this.ellipsis;
@@ -265,7 +266,7 @@ h2
 			.item-rating span
 				font-size 16px
 				position relative
-				top 4px
+				top 1px
 			.meta
 				color #494949
 				font-size 14px
