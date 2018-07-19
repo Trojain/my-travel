@@ -1,19 +1,20 @@
 <!-- 首页分类图标 -->
 <template>
 	<ul class="icons">
-		<swiper :options="swiperOption">
-			<swiper-slide v-for="(i,index) in pages" :key="index">
+		<swiper :aspect-ratio="190/360" loop dots-position="center">
+			<swiper-item v-for="(i, index) in pages" :key="index">
 				<li class="icon" v-for="item in i" :key="item.id" @click="show(item.desc)">
 					<div class="icon-imgs">
 						<img class="icon-imgcontent" v-lazy="item.imgUrl" />
 					</div>
 					<p class="icon-desc">{{item.desc}}</p>
 				</li>
-			</swiper-slide>
+			</swiper-item>
 		</swiper>
 	</ul>
 </template>
 <script>
+import { Swiper, SwiperItem } from "vux";
 export default {
     name: "HomeIcons",
     props: {
@@ -23,11 +24,11 @@ export default {
         }
     },
     data() {
-        return {
-            swiperOption: {
-                autoplay: false
-            }
-        };
+        return {};
+    },
+    components: {
+        Swiper,
+        SwiperItem
     },
     methods: {
         show(desc) {
@@ -55,11 +56,8 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
 @import '~styles/mixins.styl'
-.icons>>>.swiper-container
-	height 0
-	padding-bottom 52%
-	text-align center
-	color $darkTextColor
+.icons>>>.vux-slider > .vux-indicator > a > .vux-icon-dot.active, .vux-slider .vux-indicator-right > a > .vux-icon-dot.active
+	background-color #00bcd4
 .icon
 	position relative
 	overflow hidden
@@ -86,5 +84,6 @@ export default {
 		bottom 0
 		height 0.44rem
 		line-height 0.44rem
+		text-align center
 		ellipsis()
 </style>

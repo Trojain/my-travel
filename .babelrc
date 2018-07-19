@@ -8,11 +8,7 @@
 		}],
 		"stage-2"
 	],
-	"plugins": [
-		["component", [{
-			"libraryName": "mint-ui",
-			"style": true
-		}]]
-	]
-
+	"plugins": [{
+		"name": "vux-ui"
+	}]
 }

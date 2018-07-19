@@ -2,15 +2,13 @@
 <template>
 	<div>
 		<div class="banner" @click="handleBanner">
-			<swiper :options="swiperOption" v-if="bannerImg">
-				<swiper-slide v-for="item in gallaryImgs" :key="item.id">
-					<a :href="item.url">
-						<img class="swiper-img banner-img" v-lazy="item">
+			<swiper :aspect-ratio="375/562.5" auto loop :interval='interval'>
+				<swiper-item v-for="(item, index) in gallaryImgs" :key="index">
+					<a>
+						<img class="swiper-img banner-img previewer-demo-img" v-lazy="item" @click="show(index)">
 					</a>
-				</swiper-slide>
-				<div class="swiper-pagination" slot="pagination"></div>
+				</swiper-item>
 			</swiper>
-
 			<div class="banner-info">
 				<span class="banner-title">{{sightName}}</span>
 				<p class="banner-number">
@@ -19,26 +17,36 @@
 				</p>
 			</div>
 		</div>
-		<fade-animation>
-			<common-gallary :imgs="gallaryImgs" v-show="showGallay" @close="closeGallary"></common-gallary>
-		</fade-animation>
+		<div v-transfer-dom>
+			<previewer :list="gallaryImgs" ref="previewer" :options="options" @on-index-change="logIndexChange"></previewer>
+		</div>
 	</div>
 </template>
 
 <script>
-// common/ 指的是 /src/common 在/build/webpack.base.conf.js 配置
-import CommonGallary from "common/gallary/Gallary";
-import FadeAnimation from "common/fade/FadeAnimation";
+import { Swiper, SwiperItem, Previewer, TransferDom } from "vux";
 export default {
     name: "DetailBanner",
     props: ["sightName", "bannerImg", "gallaryImgs"],
     data() {
         return {
             showGallay: false,
-            swiperOption: {
-                pagination: ".swiper-pagination", // 小圆点
-                loop: true, // 循环轮播
-                autoplay: 5000 //自动轮播
+            interval: 5000,
+            options: {
+                getThumbBoundsFn(index) {
+                    let thumbnail = document.querySelectorAll(
+                        ".previewer-demo-img"
+                    )[index];
+                    let pageYScroll =
+                        window.pageYOffset ||
+                        document.documentElement.scrollTop;
+                    let rect = thumbnail.getBoundingClientRect();
+                    return {
+                        x: rect.left,
+                        y: rect.top + pageYScroll,
+                        w: rect.width
+                    };
+                }
             }
         };
     },
@@ -48,11 +56,21 @@ export default {
         },
         closeGallary() {
             this.showGallay = false;
+        },
+        logIndexChange(arg) {
+            console.log(arg);
+        },
+        show(index) {
+            this.$refs.previewer.show(index);
         }
     },
+    directives: {
+        TransferDom
+    },
     components: {
-        CommonGallary,
-        FadeAnimation
+        Swiper,
+        SwiperItem,
+        Previewer
     }
 };
 </script>
@@ -60,6 +78,8 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
 @import '~styles/mixins.styl'
+>>>.vux-slider > .vux-indicator, .vux-slider .vux-indicator-right
+	bottom 5px
 .banner
 	position relative
 	overflow hidden
@@ -84,11 +104,14 @@ export default {
 		.banner-number
 			height 0.4rem
 			line-height 0.4rem
-			margin-top 0.08rem
+			// margin-top 0.08rem
 			padding 0 0.4rem
 			font-size 0.24rem
 			border-radius 0.2rem
 			background rgba(0, 0, 0, 0.8)
+			position: relative;
+			top: -0.4rem;
+			left: -0.2rem;
 		.banner-icon
 			font-size 0.2rem
 			margin-right 0.1rem

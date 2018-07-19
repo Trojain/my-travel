@@ -18,7 +18,6 @@ import HomeGuess from "./components/Guess";
 import Loading from "common/loading/Loading";
 import axios from "axios";
 import { mapState } from "vuex";
-
 import { geiIndexBanner, getRecommend, getGuessList } from "api/home";
 export default {
     name: "Home",

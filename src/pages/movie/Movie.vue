@@ -1,6 +1,5 @@
 <template>
 	<div class="movie">
-		<mt-button type="danger">danger</mt-button>
 		<section>
 			<header>
 				<h2>{{hotName}}</h2>
@@ -9,7 +8,7 @@
 			<ul class="row" v-if="hotList">
 				<li class="item" v-for="(item,index) in hotList" :key="index">
 					<router-link :to="'/movie/'+item.id">
-						<img class="item-poster" v-lazy="hotImg[index]">
+						<img v-lazy="hotImg[index]" class="item-poster">
 						<span class="item-title">{{item.title}}</span>
 						<div class="item-rating" v-if="item.rating">
 							<rate :score="halfHotRate[index]" :fontSize="'font-size:12px'"></rate>
@@ -27,7 +26,7 @@
 			<ul class="row" v-if="freeList">
 				<li class="item" v-for="(item,index) in freeList" :key="index">
 					<router-link :to="'/movie/'+item.id">
-						<img class="item-poster" v-lazy="freeImg[index]">
+						<img v-lazy="freeImg[index]" class="item-poster">
 						<span class="item-title">{{item.title}}</span>
 						<div class="item-rating">
 							<rate :score="halfFreeRate[index]" :fontSize="'font-size:12px'"></rate>
@@ -45,7 +44,7 @@
 			<ul class="row" v-if="newList">
 				<li class="item" v-for="(item,index) in newList" :key="index">
 					<router-link :to="'/movie/'+item.id">
-						<img class="item-poster" v-lazy="newImg[index]">
+						<img v-lazy="newImg[index]" class="item-poster">
 						<span class="item-title">{{item.title}}</span>
 						<div class="item-rating">
 							<rate :score="halfNewRate[index]" :fontSize="'font-size:12px'"></rate>
@@ -62,7 +61,6 @@
 import Vue from "vue";
 import Rate from "common/rate/Rate";
 import { getMovieShowing, getMovieFree, getMovieLatest } from "api/movie";
-
 export default {
     name: "",
     data() {

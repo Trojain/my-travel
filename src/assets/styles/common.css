@@ -23,3 +23,5 @@ td,th {display:table-cell;vertical-align:inherit;}
 .fixed {position:fixed;top:0;_position:absolute}
 .hide {display:none !important;}
 .show {display:inline-block !important;}
+/*
+img[lazy=loading] {background: url('../../assets/images/loading_green.gif') no-repeat fixed center;background-size: 80%} */

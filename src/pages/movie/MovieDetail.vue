@@ -58,7 +58,9 @@
 				<ul data-reactroot="" class="list comment-list">
 					<li class="" v-for="(item,index) in evaluateList" :key="index">
 						<div class="desc">
-							<a href="/people/175623093/"><img v-lazy="item.user.avatar" :alt="item.user.name"></a>
+							<a href="/people/175623093/">
+								<img v-lazy="item.user.avatar" :alt="item.user.name">
+							</a>
 							<div class="user-info">
 								<strong>{{item.user.name}}</strong>
 								<div class="rating-stars">

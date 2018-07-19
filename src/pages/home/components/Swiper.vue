@@ -1,20 +1,17 @@
 <!-- 轮播 -->
 <template>
 	<div class="wrapper" v-if="showSwiper">
-		<swiper :options="swiperOption">
-			<!-- slides -->
-			<swiper-slide v-for="item in list" :key="item.id">
-				<a :href="item.url">
-					<img class="swiper-img" v-lazy="item.img" :title="item.title">
-				</a>
-			</swiper-slide>
-			<!-- Optional controls -->
-			<div class="swiper-pagination" slot="pagination"></div>
+		<swiper :aspect-ratio="186/360" auto loop :interval='interval'>
+			<swiper-item v-for="(item, index) in list" :key="index">
+				<img class="swiper-img" :src="item.img" :title="item.title">
+				<p>{{item.describe}}</p>
+			</swiper-item>
 		</swiper>
 	</div>
 </template>
 
 <script>
+import { Swiper, SwiperItem } from "vux";
 export default {
     name: "HomeSwiper",
     props: {
@@ -23,13 +20,13 @@ export default {
             default: []
         }
     },
+    components: {
+        Swiper,
+        SwiperItem
+    },
     data() {
         return {
-            swiperOption: {
-                pagination: ".swiper-pagination", // 小圆点
-                loop: true, // 循环轮播
-                autoplay: 3000 //自动轮播
-            }
+            interval: 5000
         };
     },
     computed: {
@@ -42,8 +39,8 @@ export default {
 
 <style lang="stylus" scoped>
 // >>>  样式穿透  样式不受scoped限制 可以更改其他组件样式
-.wrapper>>>.swiper-pagination-bullet-active
-	background #fff
+.wrapper>>>.vux-slider > .vux-indicator > a > .vux-icon-dot.active, .vux-slider .vux-indicator-right > a > .vux-icon-dot.active
+	background-color #FFF
 .wrapper
 	// 图片没加载出来依旧占留位置，下面的内容不会抖动
 	overflow hidden
@@ -54,4 +51,9 @@ export default {
 	background #eee
 	.swiper-img
 		width 100%
+	p
+		position relative
+		top -22px
+		left 10px
+		color #fff
 </style>

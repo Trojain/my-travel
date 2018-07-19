@@ -51,7 +51,12 @@ export default {
                         _this.details = res.data;
                         var imgList = [];
                         res.data.product.imageInfos.forEach((item, index) => {
-                            imgList.push(item.bigUrl);
+                            imgList.push({
+                                src: item.bigUrl,
+                                msrc: item.url,
+                                w: 1260,
+                                h: 840
+                            });
                         });
                         _this.gallaryImgs = imgList;
                         _this.bannerImg = imgList[0];
