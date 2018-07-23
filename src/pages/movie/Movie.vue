@@ -1,6 +1,8 @@
 <template>
 	<div class="movie">
-		<section>
+		<more :isMore="isMore" @hideMore="hide()"></more>
+		<fix-header title="电影" :rightShow="true" @more="showMore"></fix-header>
+		<section style="margin-top:46px">
 			<header>
 				<h2>{{hotName}}</h2>
 				<span>更多</span>
@@ -58,8 +60,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-import Vue from "vue";
+import More from "./More";
 import Rate from "common/rate/Rate";
+import FixHeader from "common/fixHeader/FixHeader";
 import { getMovieShowing, getMovieFree, getMovieLatest } from "api/movie";
 export default {
     name: "",
@@ -76,10 +79,11 @@ export default {
             newName: "",
             newList: [],
             newRate: [],
-            newImg: []
+            newImg: [],
+            isMore: false
         };
     },
-    components: { Rate },
+    components: { Rate, More, FixHeader },
     computed: {
         halfHotRate() {
             return this.hotRate.map(function(i) {
@@ -104,6 +108,12 @@ export default {
                 let _u = _url.substring(7);
                 return "https://images.weserv.nl/?url=" + _u;
             }
+        },
+        showMore() {
+            this.isMore = !this.isMore;
+        },
+        hide() {
+            this.isMore = false;
         }
     },
     activated() {
@@ -149,7 +159,10 @@ export default {
                 });
             }
         });
-    }
+	},
+	deactivated () {
+		this.isMore = false
+	}
 };
 </script>
 
@@ -160,6 +173,22 @@ export default {
 >>>.el-rate__icon
 	font-size 12px
 	margin-right 0
+>>>.vux-header
+	background-color #00bcd4
+	position fixed
+	top 0
+	width 100%
+	.vux-header-back
+		color #fff !important
+	.vux-header-left .left-arrow:before
+		border 1px solid #fff
+		border-width 1px 0 0 1px
+	.vux-header-more
+		color #fff !important
+.overwrite
+	font-size 24px
+	font-weight bold
+	color #fff
 section
 	border-bottom 1px solid #F2F2F2
 	header

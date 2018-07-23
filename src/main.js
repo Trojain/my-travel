@@ -8,22 +8,13 @@ import VueLazyload from 'vue-lazyload'
 import 'babel-polyfill' //解决浏览器不支持promise导致白屏问题
 import store from './store' //vuex存储文件
 
-// 引入vux ui框架
-import {
-	Swiper,
-	Previewer
-} from 'vux'
-Vue.component('swiper', Swiper)
-Vue.component('previewer', Previewer)
-
 // 下面的styles指的是 src/assets/styles 目录 (在build/webpack.base.config.js中配置)
 import 'styles/index.styl'
-
+// import 'js/vconsole.js'
 Vue.config.productionTip = false
 
 //将fastclick绑定在页面的body上
 fastclick.attach(document.body)
-
 
 // 懒加载默认图片
 Vue.use(VueLazyload, {

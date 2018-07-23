@@ -1,4 +1,4 @@
-<!-- 详情页 头部 -->
+<!-- 头部会隐藏显示 -->
 <template>
 	<div>
 		<router-link tag="div" to="/" class="header-abs" v-show="showAbs">
@@ -8,7 +8,8 @@
 			<router-link to="/">
 				<i class="iconfont back-icon">&#xe624;</i>
 			</router-link>
-			景点详情
+			{{title}}
+			<span class="header-right iconfont" v-if="rightShow" @click="clickMore">&#xe629;</span>
 		</div>
 	</div>
 </template>
@@ -16,6 +17,16 @@
 <script>
 export default {
     name: "DetailHeader",
+    props: {
+        title: {
+            type: String,
+            default: ""
+        },
+        rightShow: {
+            type: Boolean,
+            default: false
+        }
+    },
     data() {
         return {
             showAbs: true,
@@ -38,6 +49,9 @@ export default {
             } else {
                 this.showAbs = true;
             }
+        },
+        clickMore() {
+            this.$emit("more");
         }
     },
     // keepalive下的生命周期函数
@@ -92,5 +106,12 @@ export default {
 		text-align center
 		font-size 0.32rem
 		color #fff
+	.header-right
+		color #fff
+		font-weight bold
+		width 40px
+		font-size 18px
+		position absolute
+		right 0
 </style>
 

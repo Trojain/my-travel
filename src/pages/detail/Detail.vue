@@ -2,26 +2,29 @@
 <template>
 	<div>
 		<detail-banner :sightName="sightName" :bannerImg="bannerImg" :gallaryImgs="gallaryImgs" v-if="bannerImg"></detail-banner>
-		<detail-header></detail-header>
+		<header-bar title="景点详情" :rightShow="false"></header-bar>
 		<detail-list :details="details"></detail-list>
 		<loading v-if="isloading"></loading>
+		<toast v-model="toastShow" type="cancel" :time="3000">{{toastMsg}}</toast>
 	</div>
 </template>
 
 <script>
-import DetailHeader from "./components/Header";
 import DetailBanner from "./components/Banner";
 import DetailList from "./components/List";
 import Loading from "common/loading/Loading";
+import HeaderBar from "common/headerBar/HeaderBar";
 import axios from "axios";
+import { Toast } from 'vux'
 
 export default {
     name: "Detail",
     components: {
-        DetailHeader,
         DetailBanner,
         DetailList,
-        Loading
+        Loading,
+		HeaderBar,
+		Toast
     },
     data() {
         return {
@@ -29,12 +32,14 @@ export default {
             bannerImg: "",
             gallaryImgs: [],
             details: {},
-            isloading: false
+			isloading: false,
+			toastShow:false,
+			toastMsg:''
         };
     },
     methods: {
         getDetailInfo() {
-            const _this = this;
+			const _this = this;
             // 采用jquery的jsonp跨域
             const url = `https://touch.dujia.qunar.com/item?id=${
                 _this.$route.params.id
@@ -42,9 +47,11 @@ export default {
             $.ajax({
                 url: url,
                 type: "GET",
-                dataType: "JSONP",
+				dataType: "JSONP",
+				jsonp:'callback',
+				jsonpCallback:"successCallback",
                 beforeSend: function() {
-                    _this.isloading = true;
+					_this.isloading = true;
                 },
                 success: function(res) {
                     if (res.ret) {
@@ -60,9 +67,13 @@ export default {
                         });
                         _this.gallaryImgs = imgList;
                         _this.bannerImg = imgList[0];
-                        _this.sightName = res.data.summaryInfo.visitCity;
+						_this.sightName = res.data.summaryInfo.visitCity;
                     }
-                },
+				},
+				error:function (res) {
+					_this.toastShow = true;
+					_this.toastMsg = '网络错误...'
+				},
                 complete: function() {
                     _this.isloading = false;
                 }
