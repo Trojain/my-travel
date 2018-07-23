@@ -1,9 +1,11 @@
 <!-- 头部 -->
 <template>
 	<div class="header">
-		<div class="header-left">
-			<div class="iconfont back-icon">&#xe624;</div>
-		</div>
+		<router-link to="/login">
+			<div class="header-left">
+				<div class="iconfont user-icon">&#xe609;</div>
+			</div>
+		</router-link>
 		<div class="header-input" @click="inputClick">
 			<span class="iconfont">&#xe632;</span>
 			输入城市/景点/游玩主题
@@ -60,9 +62,12 @@ export default {
 	.header-left
 		width 0.64rem
 		float left
-		.back-icon
+		.user-icon
 			text-align center
-			font-size 0.4rem
+			font-size 0.38rem
+			padding-left 0.2rem
+			font-weight bold
+			color #fff
 	.header-input
 		flex 1
 		height 0.64rem

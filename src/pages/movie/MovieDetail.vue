@@ -1,6 +1,7 @@
 <!-- 电影详情 -->
 <template>
 	<div class="movieDetail">
+		<fix-header :title="title"></fix-header>
 		<h1 class="title">{{title}}</h1>
 		<section class="subject-info clearfix">
 			<div class="left">
@@ -104,12 +105,14 @@
 				</ul>
 			</div>
 		</section>
-
+		<back-to-top></back-to-top>
 	</div>
 </template>
 
 <script type="text/ecmascript-6">
 import Rate from "common/rate/Rate";
+import BackToTop from "common/backToTop/BackToTop";
+import FixHeader from "common/fixHeader/FixHeader";
 import {
     getMovieDetail,
     getCelebrities,
@@ -139,7 +142,7 @@ export default {
             expandVal: '( 展开<span class="iconfont">&#xe608;</span> )'
         };
     },
-    components: { Rate },
+    components: { Rate, BackToTop, FixHeader },
     methods: {
         expand() {
             this.ellipsis = !this.ellipsis;
@@ -236,7 +239,7 @@ section p
 	font-size 15px
 	word-wrap break-word
 h1
-	margin 30px 0 5px
+	margin 70px 0 5px
 	font-size 24px
 	line-height 32px
 	word-break break-all
@@ -414,7 +417,6 @@ h2
 				text-decoration none
 				h3
 					font-size 17px
-					font-weight 500
 					margin 0
 					line-height 1.41
 					color #494949

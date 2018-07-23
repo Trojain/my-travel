@@ -1,9 +1,7 @@
 <!-- 固定的头部 -->
 <template>
 	<div class="header-fixed">
-		<router-link to="/">
-			<i class="iconfont back-icon">&#xe624;</i>
-		</router-link>
+		<i class="iconfont back-icon" @click="goBack">&#xe624;</i>
 		{{title}}
 		<span class="header-right iconfont" v-if="rightShow" @click="clickMore">&#xe629;</span>
 	</div>
@@ -25,8 +23,11 @@ export default {
     methods: {
         clickMore() {
             this.$emit("more");
+        },
+        goBack() {
+            this.$router.go(-1);
         }
-    },
+    }
 };
 </script>
 
@@ -56,8 +57,8 @@ export default {
 	.header-right
 		color #fff
 		font-weight bold
-		width .8rem
-		font-size .4rem
+		width 0.8rem
+		font-size 0.4rem
 		position absolute
 		right 0
 </style>

@@ -9,6 +9,7 @@ import Router from 'vue-router'
 
 
 // vue路由懒加载  异步加载
+const Login = resolve => require(['@/pages/login/Login'], resolve)
 const Home = resolve => require(['@/pages/home/Home'], resolve)
 const City = resolve => require(['@/pages/city/City'], resolve)
 const Detail = resolve => require(['@/pages/detail/Detail'], resolve)
@@ -23,6 +24,10 @@ export default new Router({
 			path: '/',
 			name: 'Home',
 			component: Home
+		}, {
+			path: '/login',
+			name: 'Login',
+			component: Login
 		}, {
 			path: '/city',
 			name: 'City',

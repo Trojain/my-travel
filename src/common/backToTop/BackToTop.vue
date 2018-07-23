@@ -1,6 +1,6 @@
 <!-- 返回顶部 -->
 <template>
-	<div class="backtotop" :style="opactiyStyle" v-show="!showAbs" @click="backtotops">
+	<div class="backtotop" :style="opactiyStyle" v-show="!showAbs" @click="backtotops" style="z-index:99">
 		<span class="iconfont">&#xe786;</span>
 	</div>
 </template>
@@ -75,6 +75,7 @@ export default {
 	text-align center
 	background-color rgba(0, 0, 0, 0.7)
 	border-radius 50%
+    
 	.iconfont
 		font-size 0.5rem
 		color #00bcd4

@@ -2,7 +2,9 @@
 
 import jsonp from 'js/jsonp'
 import axios from 'axios'
-import { getCity } from 'js/cache'
+import {
+	getCity
+} from 'js/cache'
 
 
 // 获取首页轮播图
@@ -52,15 +54,23 @@ export function getGuessList() {
 //猜你喜欢详情
 export function getGuessDetail(id) {
 	const url = `https://touch.dujia.qunar.com/item?id=${id}&it=n_index_oversea_ser_visa_desti_theme_tejia_tejia_desti_theme_tejia_tejia_micro_travel_tejia_tejia_tejia_tejia_tejia_tejia_tejia_tejia_tejia_tejia_tejia_tejia`
-	$.ajax({
-		url: url,
-		type: 'GET',
-		dataType: 'JSONP',
-		success: function (res) {
-			if (res.ret) {
-				// console.log(res.data)
-				// return res.data;
-			}
-		}
+
+	// $.ajax({
+	// 	url: url,
+	// 	type: 'GET',
+	// 	dataType: 'JSONP',
+	// 	success: function (res) {
+	// 		if (res.ret) {
+	// 			// console.log(res.data)
+	// 			// return res.data;
+	// 		}
+	// 	}
+	// })
+
+
+	const data = Object.assign({}, {
+		act: 'get_recommand',
+		city: getCity()
 	})
+	return jsonp(url, data)
 }

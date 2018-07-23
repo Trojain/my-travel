@@ -29,8 +29,8 @@ export default {
         HomeIcons,
         HomeRecommend,
         HomeGuess,
-		Loading,
-		BackToTop
+        Loading,
+        BackToTop
     },
     data() {
         return {
