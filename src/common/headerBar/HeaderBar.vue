@@ -1,14 +1,11 @@
 <!-- 头部会隐藏显示 -->
 <template>
 	<div>
-		<router-link tag="div" to="/" class="header-abs" v-show="showAbs">
+		<div class="header-abs" v-show="showAbs" @click="goBack">
 			<i class="iconfont back-icon">&#xe624;</i>
-		</router-link>
+		</div>
 		<div class="header-fixed" v-show="!showAbs" :style="opactiyStyle">
-			<router-link to="/">
-				<i class="iconfont back-icon">&#xe624;</i>
-			</router-link>
-			{{title}}
+			<i class="iconfont back-icon" @click="goBack">&#xe624;</i>{{title}}
 			<span class="header-right iconfont" v-if="rightShow" @click="clickMore" v-html="rightShow"></span>
 		</div>
 	</div>
@@ -35,6 +32,9 @@ export default {
         };
     },
     methods: {
+        goBack() {
+            this.$router.go(-1);
+        },
         handleScroll() {
             const scroll_top =
                 document.body.scrollTop || document.documentElement.scrollTop;
@@ -100,15 +100,17 @@ export default {
 	font-size 0.32rem
 	.back-icon
 		position absolute
-		left 12px
+		left 0
 		top 0
 		text-align center
 		font-size 0.4rem
 		color #fff
+		width 0.8rem
 	.header-right
 		color #fff
-		font-size .44rem
+		font-size 0.44rem
 		position absolute
-		right 12px
+		right 0
+		width 0.8rem
 </style>
 
