@@ -9,7 +9,7 @@
 				<i class="iconfont back-icon">&#xe624;</i>
 			</router-link>
 			{{title}}
-			<span class="header-right iconfont" v-if="rightShow" @click="clickMore">&#xe629;</span>
+			<span class="header-right iconfont" v-if="rightShow" @click="clickMore" v-html="rightShow"></span>
 		</div>
 	</div>
 </template>
@@ -23,8 +23,7 @@ export default {
             default: ""
         },
         rightShow: {
-            type: Boolean,
-            default: false
+            default: ""
         }
     },
     data() {
@@ -101,18 +100,15 @@ export default {
 	font-size 0.32rem
 	.back-icon
 		position absolute
-		left 0
+		left 12px
 		top 0
-		width 0.64rem
 		text-align center
-		font-size 0.32rem
+		font-size 0.4rem
 		color #fff
 	.header-right
 		color #fff
-		font-weight bold
-		width 40px
-		font-size 18px
+		font-size .44rem
 		position absolute
-		right 0
+		right 12px
 </style>
 

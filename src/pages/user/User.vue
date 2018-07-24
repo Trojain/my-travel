@@ -1,7 +1,7 @@
 <!-- 个人中心 -->
 <template>
 	<div class="user">
-		<go-back></go-back>
+		<header-bar :rightShow='rightShow'></header-bar>
 		<header class="clearfix">
 			<div class="fl">
 				<!-- iconfont彩色图片 -->
@@ -13,25 +13,29 @@
 				<p class="username">13000000000</p>
 				<span class="logout" @click="logout">退出</span>
 			</div>
+			<i class="iconfont">&#xe605;</i>
 		</header>
 
 		<card :header="{title: cardheader}">
-			<div slot="content" class="card-demo-flex card-demo-content01">
+			<div slot="content" class="card-demo-flex">
 				<div class="vux-1px-r">
-					<span>1130</span>
-					<br/> 金豆
+					<span class="iconfont">&#xe602;</span>
+					<badge text="1"></badge>
+					<br/> 待付款
 				</div>
 				<div class="vux-1px-r">
-					<span>12</span>
-					<br/> 卡券
+					<span class="iconfont">&#xe60d;</span>
+					<badge text="3"></badge>
+					<br/> 待收货
 				</div>
 				<div class="vux-1px-r">
-					<span>0</span>
-					<br/> E卡
+					<span class="iconfont">&#xe603;</span>
+					<badge text="2"></badge>
+					<br/> 待评价
 				</div>
 				<div>
-					<span>88</span>
-					<br/> 七天待还
+					<span class="iconfont">&#xe621;</span>
+					<br/> 退款/售后
 				</div>
 			</div>
 		</card>
@@ -112,7 +116,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import GoBack from "common/goBack/GoBack";
+import HeaderBar from "common/headerBar/HeaderBar";
 import { Divider, Card, Badge } from "vux";
 import { mapMutations } from "vuex";
 import "styles/iconfont/iconfont.js"; //iconfont彩色图片才需引入
@@ -120,7 +124,8 @@ export default {
     name: "user",
     data() {
         return {
-            cardheader: "我的钱包"
+            cardheader: "我的订单",
+            rightShow: "&#xe605;"
         };
     },
     methods: {
@@ -134,7 +139,7 @@ export default {
         }
     },
     components: {
-        GoBack,
+        HeaderBar,
         Card,
         Divider,
         Badge
@@ -145,17 +150,21 @@ export default {
 <style scoped lang="stylus">
 .card-demo-flex
 	display flex
-.card-demo-content01
 	padding 10px 0
-.card-padding
-	padding 15px
-.card-demo-flex > div
-	flex 1
-	text-align center
-	font-size 12px
-	line-height 22px
-.card-demo-flex span
-	color #f74c31
+	.iconfont
+		color #f74c31
+		font-size 22px
+		margin-left 4px
+	> div
+		flex 1
+		text-align center
+		font-size 12px
+		line-height 22px
+		position relative
+	.vux-badge-single
+		position absolute
+		top -0.1rem
+		right 0.5rem
 .vux-1px-r
 	border-right 1px solid #ddd
 .user
@@ -163,17 +172,22 @@ export default {
 header
 	background-color #303030
 	color #fff
-	padding 36px 12px 24px 10%
+	padding 40px 15%
+	.iconfont
+		font-size 0.44rem
+		position absolute
+		top 20px
+		right 12px
 	.icon
-		width 100px
-		height 100px
+		width 50px
+		height 50px
 		fill currentColor
 		overflow hidden
 	.userinfo
-		margin 20px 40px
+		margin 0 20px
 		.username
 			font-size 16px
-			line-height 40px
+			line-height 32px
 		.logout
 			font-size 12px
 			color #ffbd80

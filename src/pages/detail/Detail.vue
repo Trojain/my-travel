@@ -2,7 +2,7 @@
 <template>
 	<div>
 		<detail-banner :sightName="sightName" :bannerImg="bannerImg" :gallaryImgs="gallaryImgs" v-if="bannerImg"></detail-banner>
-		<header-bar title="景点详情" :rightShow="false"></header-bar>
+		<header-bar title="景点详情" :rightShow="rightShow"></header-bar>
 		<detail-list :details="details"></detail-list>
 		<loading v-if="isloading"></loading>
 		<back-to-top></back-to-top>
@@ -34,6 +34,7 @@ export default {
             gallaryImgs: [],
             details: {},
             isloading: false,
+            rightShow: "&#xe736;"
         };
     },
     activated() {
