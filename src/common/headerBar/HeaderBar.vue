@@ -37,7 +37,8 @@ export default {
     },
     methods: {
         handleScroll() {
-            const scroll_top = document.body.scrollTop || document.documentElement.scrollTop;
+            const scroll_top =
+                document.body.scrollTop || document.documentElement.scrollTop;
             // console.log(scroll_top);
             if (scroll_top > 60) {
                 let opacity = scroll_top / 140;

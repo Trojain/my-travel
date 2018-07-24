@@ -1,10 +1,11 @@
 // 歌曲播放模式
 
-import { getCity } from 'js/cache'
+import { getCity ,getMobile} from 'js/cache'
 
 const state = {
 	// singer: {}, // 歌手详情
-	city: getCity(), // 默认从缓存中获取城市
+    city: getCity(), // 默认从缓存中获取城市
+    mobile:getMobile()// 默认从缓存中获取手机号
 }
 
 export default state

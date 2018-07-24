@@ -1,11 +1,11 @@
 <!-- 头部 -->
 <template>
 	<div class="header">
-		<router-link to="/login">
-			<div class="header-left">
-				<div class="iconfont user-icon">&#xe609;</div>
-			</div>
-		</router-link>
+		<div class="header-left">
+			<router-link to="/user">
+				<div class="iconfont user-icon" :class="{'icon-yidenglu01':islogin, 'icon-weidenglu':!islogin}"></div>
+			</router-link>
+		</div>
 		<div class="header-input" @click="inputClick">
 			<span class="iconfont">&#xe632;</span>
 			输入城市/景点/游玩主题
@@ -42,7 +42,11 @@ export default {
     computed: {
         // 用vuex读取数据(读取的是getters.js中的数据)
         // 相当于this.$store.getters.city(vuex语法糖)
-        ...mapGetters(["city"]) // 直接使用this.city即可调用
+        ...mapGetters(["city"]), // 直接使用this.city即可调用
+        ...mapGetters(["mobile"]),
+        islogin() {
+            return this.mobile ? true : false;
+        }
     }
 };
 </script>
@@ -64,8 +68,8 @@ export default {
 		float left
 		.user-icon
 			text-align center
-			font-size 0.38rem
-			padding-left 0.2rem
+			font-size 0.44rem
+			padding-left 0.14rem
 			font-weight bold
 			color #fff
 	.header-input

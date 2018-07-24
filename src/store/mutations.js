@@ -1,13 +1,14 @@
 const mutations = {
 
+    // 设置城市
 	'SET_CITY' (state, val) {
 		state.city = val;
 	},
 
-	// 设置vkey
-	// 'SET_VKEY' (state, val) {
-	// 	state.vkey = val;
-	// },
+	// 设置手机号
+	'SET_MOBILE' (state, val) {
+		state.mobile = val;
+	},
 
 
 }
