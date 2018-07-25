@@ -20,8 +20,8 @@ export default {
         CityHeader,
         CitySearch,
         CityList,
-		CityAlphabet,
-		MyFooter
+        CityAlphabet,
+        MyFooter
     },
     data() {
         return {
@@ -35,9 +35,8 @@ export default {
             this.letter = rs;
         },
         getCityInfo() {
-            axios
-                .get("http://other.xiabingbing.cn/city.json")
-                .then(this.getCityInfoSucc);
+            axios.get("https://other.xiabingbing.cn/city.json").then(this.getCityInfoSucc);
+            // axios.get("/static/mock/city.json").then(this.getCityInfoSucc);
         },
         getCityInfoSucc(res) {
             console.log(res);

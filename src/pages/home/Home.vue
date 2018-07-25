@@ -32,8 +32,8 @@ export default {
         HomeRecommend,
         HomeGuess,
         Loading,
-		BackToTop,
-		MyFooter
+        BackToTop,
+        MyFooter
     },
     data() {
         return {
@@ -54,15 +54,10 @@ export default {
     },
     methods: {
         getHomeInfo() {
-            axios
-                .get(
-                    "https://other.xiabingbing.cn/index.json?aaa&city=" +
-                        this.city
-                )
-                .then(this.getHomeInfoSucc);
+            axios.get("https://other.xiabingbing.cn/index.json?aaa&city=" + this.city).then(this.getHomeInfoSucc);
             // axios.get('/api/index.json').then(this.getHomeInfoSucc)
             // 等同于
-            // axios.get('/static/mock/index.json').then(this.getHomeInfoSucc)
+            // axios.get("/static/mock/index.json").then(this.getHomeInfoSucc);
         },
         getHomeInfoSucc(res) {
             const rs = res.data;
