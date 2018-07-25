@@ -38,7 +38,7 @@
 				</li>
 			</ul>
 		</section>
-		<section>
+		<section style="padding-bottom: 50px">
 			<header>
 				<h2>{{newName}}</h2>
 				<span>更多</span>
@@ -56,6 +56,7 @@
 				</li>
 			</ul>
 		</section>
+		<my-footer></my-footer>
 	</div>
 </template>
 
@@ -63,6 +64,7 @@
 import More from "./More";
 import Rate from "common/rate/Rate";
 import FixHeader from "common/fixHeader/FixHeader";
+import MyFooter from "common/footer/MyFooter";
 import { getMovieShowing, getMovieFree, getMovieLatest } from "api/movie";
 export default {
     name: "",
@@ -83,7 +85,7 @@ export default {
             isMore: false
         };
     },
-    components: { Rate, More, FixHeader },
+    components: { Rate, More, FixHeader, MyFooter },
     computed: {
         halfHotRate() {
             return this.hotRate.map(function(i) {
@@ -159,10 +161,10 @@ export default {
                 });
             }
         });
-	},
-	deactivated () {
-		this.isMore = false
-	}
+    },
+    deactivated() {
+        this.isMore = false;
+    }
 };
 </script>
 

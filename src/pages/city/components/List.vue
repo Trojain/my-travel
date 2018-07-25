@@ -91,6 +91,7 @@ export default {
 	left 0
 	right 0
 	bottom 0
+	margin-bottom 49px
 	.button-list
 		padding 0.1rem 0.6rem 0.1rem 0.1rem
 		clearfix()

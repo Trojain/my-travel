@@ -67,12 +67,13 @@ export default {
 	justify-content center
 	text-align center
 	position absolute
-	top 1.58rem
+	// top 1.58rem
+	top 0.8rem
 	right 0
 	bottom 0
 	width 0.4rem
 	.item
-		line-height 0.4rem
+		line-height 0.36rem
 		color $bgColor
 </style>
 

@@ -67,16 +67,15 @@ export default {
 <style scoped lang="stylus">
 .backtotop
 	position fixed
-	bottom 6%
+	bottom 10%
 	right 0.4rem
-	width 1rem
-	height 1rem
-	line-height 1rem
+	width 0.8rem
+	height 0.8rem
+	line-height 0.8rem
 	text-align center
 	background-color rgba(0, 0, 0, 0.7)
 	border-radius 50%
-    
 	.iconfont
-		font-size 0.5rem
+		font-size 0.4rem
 		color #00bcd4
 </style>

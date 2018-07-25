@@ -5,6 +5,7 @@
 		<home-swiper :list="swiperList"></home-swiper>
 		<home-icons :list="iconList"></home-icons>
 		<home-guess :list="guessList"></home-guess>
+		<my-footer></my-footer>
 		<home-recommend :list="recommendList"></home-recommend>
 		<loading v-if="!isloading"></loading>
 		<back-to-top></back-to-top>
@@ -16,6 +17,7 @@ import HomeSwiper from "./components/Swiper";
 import HomeIcons from "./components/Icons";
 import HomeRecommend from "./components/Recommend";
 import HomeGuess from "./components/Guess";
+import MyFooter from "common/footer/MyFooter";
 import Loading from "common/loading/Loading";
 import BackToTop from "common/backToTop/BackToTop";
 import axios from "axios";
@@ -30,7 +32,8 @@ export default {
         HomeRecommend,
         HomeGuess,
         Loading,
-        BackToTop
+		BackToTop,
+		MyFooter
     },
     data() {
         return {

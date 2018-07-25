@@ -23,6 +23,9 @@ var router;
 export default router = new Router({
 	routes: [{
 			path: '/',
+			redirect: '/home', //设置默认指向的路径
+		}, {
+			path: '/home',
 			name: 'Home',
 			component: Home
 		}, {
@@ -113,7 +116,7 @@ router.beforeEach((to, from, next) => {
 		indexScrollTop = document.body.scrollTop
 	}
 	// 设置当前title
-	document.title = to.meta.title || document.title
+	// document.title = to.meta.title || document.title
 })
 
 router.afterEach(route => {

@@ -112,11 +112,13 @@
 				</div>
 			</div>
 		</section>
+		<my-footer></my-footer>
 	</div>
 </template>
 
 <script type="text/ecmascript-6">
 import HeaderBar from "common/headerBar/HeaderBar";
+import MyFooter from "common/footer/MyFooter";
 import { Divider, Card, Badge } from "vux";
 import { mapMutations } from "vuex";
 import "styles/iconfont/iconfont.js"; //iconfont彩色图片才需引入
@@ -140,6 +142,7 @@ export default {
     },
     components: {
         HeaderBar,
+        MyFooter,
         Card,
         Divider,
         Badge
@@ -217,4 +220,7 @@ header
 				color #fff
 			i
 				font-size 12px
+.center-nav
+	background-color #ebebeb
+	padding-bottom 50px
 </style>

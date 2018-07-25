@@ -37,7 +37,7 @@ export default {
 @import '~styles/mixins.styl'
 .recommend
 	padding 0.4rem 0
-	margin 0 0.4rem
+	margin 0 0.4rem 50px
 	border-top 1px solid #f1f1f1
 	.title
 		font-size 0.32rem

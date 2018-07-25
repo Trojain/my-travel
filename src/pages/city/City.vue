@@ -4,6 +4,7 @@
 		<city-search :cities="cities"></city-search>
 		<city-list :cities="cities" :hot="hotCities" :letter="letter"></city-list>
 		<city-alphabet :cities="cities" @change="handChange"></city-alphabet>
+		<my-footer></my-footer>
 	</div>
 </template>
 <script>
@@ -12,13 +13,15 @@ import CityHeader from "./components/Header";
 import CitySearch from "./components/Search";
 import CityList from "./components/List";
 import CityAlphabet from "./components/Alphabet";
+import MyFooter from "common/footer/MyFooter";
 export default {
     name: "Search",
     components: {
         CityHeader,
         CitySearch,
         CityList,
-        CityAlphabet
+		CityAlphabet,
+		MyFooter
     },
     data() {
         return {
