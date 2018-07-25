@@ -56,7 +56,7 @@ export default {
         getHomeInfo() {
             axios
                 .get(
-                    "http://other.xiabingbing.cn/index.json?aaa&city=" +
+                    "https://other.xiabingbing.cn/index.json?aaa&city=" +
                         this.city
                 )
                 .then(this.getHomeInfoSucc);
