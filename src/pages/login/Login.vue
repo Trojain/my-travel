@@ -1,6 +1,7 @@
 <!-- 登录组件 -->
 <template>
 	<div class="login">
+		<header-bar title="景点详情" :rightShow="rightShow"></header-bar>
 		<x-input title="手机号" ref="mobile" mask="999 9999 9999" v-model="mobile" :max="13" is-type="china-mobile" placeholder="请输入手机号" required></x-input>
 		<x-input title="验证码" ref="code" v-model="code" :max="4" :is-type="isnumber" placeholder="请输入验证码" required></x-input>
 		<div class="weui-cell tips">
@@ -11,6 +12,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import HeaderBar from "common/headerBar/HeaderBar";
 import { mapGetters, mapMutations } from "vuex";
 import { setMobile } from "js/cache"; // 缓存
 import { XInput } from "vux";
@@ -28,7 +30,7 @@ export default {
             }
         };
     },
-    components: { XInput },
+    components: { XInput, HeaderBar },
     methods: {
         ...mapMutations({
             loginMobile: "SET_MOBILE"
@@ -53,8 +55,8 @@ export default {
                         text: "登录成功"
                     });
                     setTimeout(() => {
-						// this.$router.push({ path: "/" });
-						this.$router.go(-1)
+                        // this.$router.push({ path: "/" });
+                        this.$router.go(-1);
                     }, 1000);
                 } else {
                     this.$vux.toast.text("手机或验证码不正确");
@@ -67,9 +69,10 @@ export default {
 
 <style scoped lang="stylus">
 .login
-	margin 1rem 0.4rem
+	margin 0 0.4rem
 	font-size 0.3rem
 	line-height 0.6rem
+	padding-top 2rem
 	>>>.weui-input
 		position relative
 		top -2px

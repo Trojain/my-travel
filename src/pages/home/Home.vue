@@ -54,7 +54,7 @@ export default {
     },
     methods: {
         getHomeInfo() {
-            axios.get("https://other.xiabingbing.cn/index.json?aaa&city=" + this.city).then(this.getHomeInfoSucc);
+            axios.get("http://other.xiabingbing.cn/index.json?aaa&city=" + this.city).then(this.getHomeInfoSucc);
             // axios.get('/api/index.json').then(this.getHomeInfoSucc)
             // 等同于
             // axios.get("/static/mock/index.json").then(this.getHomeInfoSucc);

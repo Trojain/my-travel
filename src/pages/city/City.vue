@@ -35,7 +35,7 @@ export default {
             this.letter = rs;
         },
         getCityInfo() {
-            axios.get("https://other.xiabingbing.cn/city.json").then(this.getCityInfoSucc);
+            axios.get("http://other.xiabingbing.cn/city.json").then(this.getCityInfoSucc);
             // axios.get("/static/mock/city.json").then(this.getCityInfoSucc);
         },
         getCityInfoSucc(res) {
